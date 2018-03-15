@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="HttpRequest:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/HttpRequest_jar</output-path>
+    <root id="archive" name="HttpRequest.jar">
+      <element id="module-output" name="HttpRequest" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="webservice-restful:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="webservice-restful.war">
+      <element id="artifact" artifact-name="webservice-restful:war exploded" />
+    </root>
+  </artifact>
+</component>

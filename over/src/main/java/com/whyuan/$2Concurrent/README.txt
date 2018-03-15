@@ -1,0 +1,15 @@
+Concurrent：
+	BlockingQueue:
+	ConcurrentMap:
+	CountDownLatch:设置闭锁产生阻塞
+	CyclicBarrier:控制多个线程并行度。
+	Exchanger:俩线程交还对象。
+	Semaphore:控制一段重要代码同一时间不超过指定数量的线程并发访问。
+	ThreadPoolExecutor:
+		1.创建线程的方法。
+		2.创建线程参数的意义。
+		3.提交任务的方法区别。
+	ForkJoinPool:拆分合并执行处理
+	Lock：
+	ReadWriteLock:读读不排斥，有写才排斥（对应大量读，少量写的场景效率高）
+	Atomic:

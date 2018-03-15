@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans        http://www.springframework.org/schema/beans/spring-beans.xsd        http://code.alibabatech.com/schema/dubbo        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!--当前项目在整个分布式架构里面的唯一名称，计算依赖关系的标签,指定维护者-->
+    <dubbo:application name="order-provider" owner="whyuan"/>
+
+    <!--点对点订阅模式-->
+    <!--dubbo这个服务所要暴露的服务地址所对应的注册中心-->
+    <dubbo:registry address="N/A"/>
+    <!--服务发布所依赖的协议，指定port属性，表示未用注册中心，点对点服务-->
+    <dubbo:protocol name="dubbo" port="20880"/>
+    <!--生成一个远程服务的调用代理,指定url属性表示未用注册中心，点对点服务,async=true表示订阅端异步进行操作-->
+    <dubbo:reference id="orderServices" interface="com.whyuan.order.IOrderServices" url="dubbo://192.168.42.1:20880/com.whyuan.order.IOrderServices" protocol="hessian" version="1.0" async="true"/>
+
+    <dubbo:reference id="queryServices" interface="com.whyuan.order.IQueryServices" url="hessian://192.168.42.1:8090/com.whyuan.order.IQueryServices" protocol="hessian" version="1.0"/>
+
+    <!--注册中心订阅模式-->
+    <!--<dubbo:registry address="zookeeper://192.168.158.131:2181?backup=192.168.158.130:2181,192.168.158.132:2181"/>
+    <dubbo:reference id="orderServices" interface="com.whyuan.order.IOrderServices"/>-->
+
+</beans>

@@ -1,0 +1,13 @@
+D:\AllWorkSpace\IntellijWorkSpace\dubbo-activeMQ\dubbo-user\provider\src\main\java\com\gupao\vip\mic\dubbo\jms\DefineBrokerServer.java
+D:\AllWorkSpace\IntellijWorkSpace\dubbo-activeMQ\dubbo-user\provider\src\main\java\com\gupao\vip\mic\dubbo\services\UserCoreService.java
+D:\AllWorkSpace\IntellijWorkSpace\dubbo-activeMQ\dubbo-user\provider\src\main\java\com\gupao\vip\mic\dubbo\services\UserQueryService.java
+D:\AllWorkSpace\IntellijWorkSpace\dubbo-activeMQ\dubbo-user\provider\src\main\java\com\gupao\vip\mic\dubbo\exception\ExceptionUtil.java
+D:\AllWorkSpace\IntellijWorkSpace\dubbo-activeMQ\dubbo-user\provider\src\main\java\com\gupao\vip\mic\dubbo\main\Bootstrap.java
+D:\AllWorkSpace\IntellijWorkSpace\dubbo-activeMQ\dubbo-user\provider\src\main\java\com\gupao\vip\mic\dubbo\dal\entity\User.java
+D:\AllWorkSpace\IntellijWorkSpace\dubbo-activeMQ\dubbo-user\provider\src\main\java\com\gupao\vip\mic\dubbo\dal\persistence\UserMapper.java
+D:\AllWorkSpace\IntellijWorkSpace\dubbo-activeMQ\dubbo-user\provider\src\main\java\com\gupao\vip\mic\dubbo\exception\ServiceException.java
+D:\AllWorkSpace\IntellijWorkSpace\dubbo-activeMQ\dubbo-user\provider\src\main\java\com\gupao\vip\mic\dubbo\exception\ValidateException.java
+D:\AllWorkSpace\IntellijWorkSpace\dubbo-activeMQ\dubbo-user\provider\src\main\java\com\gupao\vip\mic\dubbo\jms\JmsSender.java
+D:\AllWorkSpace\IntellijWorkSpace\dubbo-activeMQ\dubbo-user\provider\src\main\java\com\gupao\vip\mic\dubbo\jms\JmsTopicSender.java
+D:\AllWorkSpace\IntellijWorkSpace\dubbo-activeMQ\dubbo-user\provider\src\main\java\com\gupao\vip\mic\dubbo\jms\RegisterQueueMessageListener.java
+D:\AllWorkSpace\IntellijWorkSpace\dubbo-activeMQ\dubbo-user\provider\src\main\java\com\gupao\vip\mic\dubbo\jms\SpringJmsSender.java

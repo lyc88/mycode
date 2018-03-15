@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.whyuan.maven-plugin</groupId>
+    <artifactId>maven-plugin</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <!--引入插件打包--><!--打包方式，默认为jar-->
+    <packaging>maven-plugin</packaging>
+
+    <dependencies>
+        <!-- 以下俩个依赖为自定义插件的依赖-->
+        <dependency>
+            <groupId>org.apache.maven</groupId>             <!--组ID-->
+            <artifactId>maven-plugin-api</artifactId>       <!--功能命名-->
+            <version>3.5.0</version>                        <!--版本号-->
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven.plugin-tools</groupId>
+            <artifactId>maven-plugin-annotations</artifactId>
+            <version>3.5</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <!-- Profile-->
+    <!-- 指定环境打包：mvn clean install -P dev-->
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <profiles.active>dev</profiles.active>
+            </properties>
+            <!-- 指定默认的配置为开发配置-->
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+
+        <profile>
+            <id>test</id>
+            <properties>
+                <profiles.active>test</profiles.active>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>pro</id>
+            <properties>
+                <profiles.active>pro</profiles.active>
+            </properties>
+        </profile>
+    </profiles>
+
+    <build>
+        <finalName>maven-plugin</finalName>
+        <!--配置文件引入-->
+        <resources>
+            <resource>
+                <directory>${basedir}/src/main/resources</directory>
+                <excludes>
+                    <exclude>conf/**</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/resources/conf/${profiles.active}</directory>
+            </resource>
+        </resources>
+
+        <plugins>
+            <!-- 插件1：Tomcat插件-->
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <port>8080</port>
+                    <path>/</path>
+                </configuration>
+            </plugin>
+            <!--插件2：统一升级版本号-->
+            <!--mvn versions:set -DnewVersion=1.1-->
+            <!-- 注意newVersion为自定义的版本参数-->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>2.3</version>
+            </plugin>
+            <!-- 插件3：静态代码检查-->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <threshold>High</threshold>
+                    <effort>Default</effort>
+                    <findbugsXmlOutput>true</findbugsXmlOutput>
+                    <!--生成Xml报告的输出路径-->
+                    <findbugsXmlOutputDirectory>target/site</findbugsXmlOutputDirectory>
+                </configuration>
+            </plugin>
+            <!-- 插件4：源代码打包插件-->
+            <plugin>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.3</version>
+                <executions>
+                    <execution>
+                        <id>attach-source</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- 插件5：打包war,zip-->
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.0.0</version>
+                <!--configuration中书写参数传递-->
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.whyuan.MyMojo</mainClass>
+                        </manifest>
+                    </archive>
+                    <descriptorRefs>
+                        <!-- 把你项目相关的其他依赖都打包进来-->
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+                <!-- 将名字为single的goal挂载到生命周期的某个阶段，编译的时候自动执行（只依赖不挂载插件是不会运行的）-->
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+             <!-- 自定义插件:供其他项目依赖-->
+            <!--<plugin>
+                <groupId>com.whyuan</groupId>
+                <artifactId>maven-plugin</artifactId>
+                <version>1.0-SNAPSHOT</version>
+                <configuration>
+                    &lt;!&ndash; 自定义插件传入参数&ndash;&gt;
+                    <msg>this is from MyMojo @Parameter String msg</msg>
+                    <options>
+                        <option>one</option>
+                        <option>two</option>
+                    </options>
+                </configuration>
+            </plugin>-->
+        </plugins>
+    </build>
+</project>

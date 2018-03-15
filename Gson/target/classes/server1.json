@@ -1,0 +1,8 @@
+{
+  name:"擎天柱",
+  age:18,
+  exam:{
+    subject:"数学",
+    grade:85.5
+  }
+}

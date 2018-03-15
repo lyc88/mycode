@@ -1,0 +1,12 @@
+D:\AllWorkSpace\IntellijWorkSpace\dubbo-activeMQ\dubbo-user\api\src\main\java\com\gupao\vip\mic\dubbo\user\dto\UserRegisterResponse.java
+D:\AllWorkSpace\IntellijWorkSpace\dubbo-activeMQ\dubbo-user\api\src\main\java\com\gupao\vip\mic\dubbo\user\IUserCoreService.java
+D:\AllWorkSpace\IntellijWorkSpace\dubbo-activeMQ\dubbo-user\api\src\main\java\com\gupao\vip\mic\dubbo\user\constants\ResponseCodeEnum.java
+D:\AllWorkSpace\IntellijWorkSpace\dubbo-activeMQ\dubbo-user\api\src\main\java\com\gupao\vip\mic\dubbo\user\dto\UserLoginResponse.java
+D:\AllWorkSpace\IntellijWorkSpace\dubbo-activeMQ\dubbo-user\api\src\main\java\com\gupao\vip\mic\dubbo\user\dto\UserQueryResponse.java
+D:\AllWorkSpace\IntellijWorkSpace\dubbo-activeMQ\dubbo-user\api\src\main\java\com\gupao\vip\mic\dubbo\user\IUserQueryService.java
+D:\AllWorkSpace\IntellijWorkSpace\dubbo-activeMQ\dubbo-user\api\src\main\java\com\gupao\vip\mic\dubbo\user\abs\AbstractRequest.java
+D:\AllWorkSpace\IntellijWorkSpace\dubbo-activeMQ\dubbo-user\api\src\main\java\com\gupao\vip\mic\dubbo\user\abs\AbstractResponse.java
+D:\AllWorkSpace\IntellijWorkSpace\dubbo-activeMQ\dubbo-user\api\src\main\java\com\gupao\vip\mic\dubbo\user\dto\UserRegisterRequest.java
+D:\AllWorkSpace\IntellijWorkSpace\dubbo-activeMQ\dubbo-user\api\src\main\java\com\gupao\vip\mic\dubbo\user\constants\Constants.java
+D:\AllWorkSpace\IntellijWorkSpace\dubbo-activeMQ\dubbo-user\api\src\main\java\com\gupao\vip\mic\dubbo\user\dto\UserLoginRequest.java
+D:\AllWorkSpace\IntellijWorkSpace\dubbo-activeMQ\dubbo-user\api\src\main\java\com\gupao\vip\mic\dubbo\user\dto\UserQueryRequest.java

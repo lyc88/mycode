@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans        http://www.springframework.org/schema/beans/spring-beans.xsd        http://code.alibabatech.com/schema/dubbo        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!--当前项目在整个分布式架构里面的唯一名称，计算依赖关系的标签，owner指定维护人员-->
+    <dubbo:application name="order-provider" owner="whyuan"/>
+
+    <!--注册服务监控中心monitor-->
+    <dubbo:monitor protocol="registry"/>
+
+    <!--dubbo这个服务所要暴露的服务地址所对应的注册中心-->
+    <!--"N/A"表示无需注册，以点对点方式运行-->
+    <dubbo:registry address="N/A"/>
+    <!--指定Zookeeper节点为注册中心-->
+<!--
+    <dubbo:registry protocol="zookeeper" address="192.168.158.130:2181,192.168.158.131:2181,192.168.158.132:2181"/>
+-->
+
+    <!--当前服务发布所依赖的协议:webserovice、Thrift、Hessian、http（支持多协议）-->
+    <!--可通过host绑定主机-->
+    <dubbo:protocol name="dubbo" port="20880" host=""/>
+    <!--增加 hessian协议-->
+    <dubbo:protocol name="hessian" port="8090" server="jetty"/>
+
+    <!--服务发布的配置，需要暴露的服务接口版本1（支持多版本）-->
+    <dubbo:service interface="com.whyuan.order.IOrderServices" ref="orderService" version="1.0" timeout="" loadbalance=""/>
+    <!--服务发布的配置，需要暴露的服务接口版本2-->
+    <dubbo:service interface="com.whyuan.order.IOrderServices" ref="orderService2" version="2.0"/>
+
+    <!--另一个服务发布的配置，需要暴露的服务接口版本1-->
+    <dubbo:service interface="com.whyuan.order.IQueryServices" ref="queryService" protocol="hessian" version="1.0"/>
+
+
+    <!--具体实现类Bean bean定义（可以引入spring注解@service进行装配）-->
+    <bean id="orderService" class="com.whyuan.order.OrderServiceImpl"/>
+    <bean id="orderService2" class="com.whyuan.order.OrderServiceImpl2"/>
+    <bean id="queryService" class="com.whyuan.order.QueryServiceImpl"/>
+
+
+
+
+
+</beans>
